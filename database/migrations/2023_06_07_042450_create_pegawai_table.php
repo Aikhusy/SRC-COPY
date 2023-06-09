@@ -12,7 +12,7 @@ class CreatePegawaiTable extends Migration
     public function up(): void
     {
         Schema::create('pegawai', function (Blueprint $table) {
-            $table->integer ('id_pegawai');
+            $table->id();
             $table->string('nama_pegawai', 25);
             $table->string('jabatan', 25);
             $table->integer('id_usaha');
@@ -20,7 +20,6 @@ class CreatePegawaiTable extends Migration
             $table->string('no_telp', 15);
             $table->string('email', 25);
             $table->string('password', 15);
-            $table->integer('id_alamat_pegawai');
             $table->timestamps();
         });
     }
