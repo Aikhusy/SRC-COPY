@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('username',50);
             $table->string('password',50);
-            $table->int('levels');
+            $table->integer('levels');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('penggunas');
+        Schema::dropIfExists('pengguna');
     }
 };

@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->integer('id_invoice');
             $table->integer('id_barang');
-            $table->interger('id_pengguna');
-            $table->interger('amount');
+            $table->integer('id_pengguna');
+            $table->integer('amount');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transaksis');
+        Schema::dropIfExists('transaksi');
     }
 };
