@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('invoice', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('id_metode');
-            $table->string('status',50);
-            $table->timestamps();
+        Schema::table('transaksi', function (Blueprint $table) {
+            $table->foreign('id_produk')->references('id')->on('products');
+            $table->foreign('id_pengguna')->references('id')->on('pengguna');
+            $table->foreign('id_invoice')->references('id')->on('invoice');
         });
     }
 
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('invoice');
+        Schema::dropIfExists('transaksi');
     }
 };

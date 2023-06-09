@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_invoice');
-            $table->integer('id_barang');
-            $table->integer('id_pengguna');
+            $table->unsignedBigInteger('id_pengguna');
+            $table->unsignedBigInteger('id_produk');
+            $table->unsignedBigInteger('id_invoice');
             $table->integer('amount');
             $table->timestamps();
         });

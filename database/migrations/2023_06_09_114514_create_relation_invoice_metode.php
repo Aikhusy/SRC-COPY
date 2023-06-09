@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transactions', function (Blueprint $table) {
-            $table->id();
-            $table->integer('id_produk');
-            $table->integer('id_invoice');
-            $table->integer('id_metode_pembayaran');
-            $table->timestamps();
+        Schema::table('invoice', function (Blueprint $table) {
+            $table->foreign('id_metode')->references('id')->on('metode_pembayaran');
         });
     }
 
@@ -25,6 +21,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('relation_invoice_metode');
     }
 };
