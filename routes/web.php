@@ -24,5 +24,6 @@ route::resource('pengguna',PenggunaController::class);
 
 Route::post('/lookVar', 'App\Http\Controllers\PenggunaController@lookVar')->name('lookVar');
 Route::post('/pengguna', 'App\Http\Controllers\PenggunaController@store')->name('pengguna.store');
+Route::post('/pengguna', 'App\Http\Controllers\PenggunaController@loginValidate')->name('pengguna.login');
 Route::view('/login', 'login.loginPage');
 

@@ -82,4 +82,30 @@ class PenggunaController extends Controller
     {
         dd($request->all());
     }
+
+    public function loginValidate(Request $request)
+    {
+        $users = pengguna::
+            where('username',$request['username'])
+            ->first();
+        
+        // dd($request['password']);
+        if ($users && Hash::check($request['password'], $users->password)) 
+        {
+            if($users['levels']==2)
+            {
+                return view('admin.dashboard');
+            }
+            if($users['levels']==1)
+            {
+                return view('pengguna.dashboard');
+            }
+        } 
+        
+        else 
+        {
+            return view('login.loginPage');
+            
+        }
+    }
 }
