@@ -9,8 +9,8 @@
     <form action="{{ route('pengguna.store') }}" method="POST">
         @csrf
 
-        <label for="name">Username</label>
-        <input type="text" id="name" name="name">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username">
 
         <br><br>
 
@@ -18,10 +18,8 @@
         <input type="text" id="Password" name="password">
 
         <br><br>
-        @php
-            $levels = 1;
-        @endphp
-        <input type="hidden" id="hidden" name="levels" value="pengguna">
+
+        <input type="hidden" id="hidden" name="levels" value=1>
         <input type="submit" value="Submit">
     </form>
 </body>

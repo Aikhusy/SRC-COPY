@@ -6,6 +6,7 @@ use App\Models\pengguna;
 use App\Http\Requests\StorepenggunaRequest;
 use App\Http\Requests\UpdatepenggunaRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class PenggunaController extends Controller
 {
@@ -33,12 +34,12 @@ class PenggunaController extends Controller
     {
         //
         $validatedData = $request->validate([
-            'nama' => 'required',
+            'username' => 'required',
             'password' => 'required',
             'levels' => 'required'
         ]);
 
-        $validatedData['password'] = bcrypt($validatedData['password']);
+        $validatedData['password'] = Hash::make($validatedData['password']);
 
         $pengguna = Pengguna::create($validatedData);
 
@@ -75,5 +76,10 @@ class PenggunaController extends Controller
     public function destroy(pengguna $pengguna)
     {
         //
+    }
+
+    public function lookVar(Request $request)
+    {
+        dd($request->all());
     }
 }
