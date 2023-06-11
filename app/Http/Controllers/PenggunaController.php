@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\pengguna;
 use App\Http\Requests\StorepenggunaRequest;
 use App\Http\Requests\UpdatepenggunaRequest;
+use Illuminate\Http\Request;
 
 class PenggunaController extends Controller
 {
@@ -22,14 +23,26 @@ class PenggunaController extends Controller
     public function create()
     {
         //
+        return view('login.registerPage');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorepenggunaRequest $request)
+    public function store(Request $request)
     {
         //
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'password' => 'required',
+            'levels' => 'required'
+        ]);
+
+        $validatedData['password'] = bcrypt($validatedData['password']);
+
+        $pengguna = Pengguna::create($validatedData);
+
+        return redirect()->route('login.loginPage')->with('success', 'Data berhasil disimpan.');
     }
 
     /**
@@ -51,7 +64,7 @@ class PenggunaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatepenggunaRequest $request, pengguna $pengguna)
+    public function update(Request $request, pengguna $pengguna)
     {
         //
     }

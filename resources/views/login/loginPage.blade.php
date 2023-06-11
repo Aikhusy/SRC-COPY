@@ -1,0 +1,1 @@
+<a href="{{ route('pengguna.create') }}">Belum Punya Akun?</a>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PenggunaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//bagian login login taru disini ya gaess
+
+route::resource('pengguna',PenggunaController::class);
+
+
+Route::view('/login', 'login.loginPage');
+
