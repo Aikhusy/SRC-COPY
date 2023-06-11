@@ -43,6 +43,7 @@ class PenggunaController extends Controller
 
         $pengguna = Pengguna::create($validatedData);
 
+        unset($validatedData);
         return redirect()->route('login.loginPage')->with('success', 'Data berhasil disimpan.');
     }
 
@@ -92,20 +93,22 @@ class PenggunaController extends Controller
         // dd($request['password']);
         if ($users && Hash::check($request['password'], $users->password)) 
         {
-            if($users['levels']==2)
-            {
-                return view('admin.dashboard');
-            }
             if($users['levels']==1)
             {
+                unset($users);
+                return redirect('/admin/dashboard');
+            }
+            if($users['levels']==2)
+            {
+                unset($users);
                 return view('pengguna.dashboard');
             }
         } 
         
         else 
         {
+            unset($users);
             return view('login.loginPage');
-            
         }
     }
 }
