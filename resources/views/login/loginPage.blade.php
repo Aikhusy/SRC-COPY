@@ -30,11 +30,7 @@
             </form>
         </div>
         <div class="right">
-            <img src="{{ asset('images/gmbr1.png') }}" alt="">
-
-        </div>
-        <div>
-            <img src="" class="avatar">
+            <img src="{{ asset('image/gmbr1.png') }}" alt="">
         </div>
     </div>
 </div>
