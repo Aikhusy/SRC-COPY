@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,7 @@ Route::get('/', function () {
 // ==================================================================================
 // bagian login login taru disini ya gaess
 // ==================================================================================
+route::resource('pengguna',AdminController::class);
 route::resource('pengguna',PenggunaController::class);
 
 Route::post('/lookVar', 'App\Http\Controllers\PenggunaController@lookVar')->name('lookVar');
