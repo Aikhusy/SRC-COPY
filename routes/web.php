@@ -26,6 +26,9 @@ Route::post('/lookVar', 'App\Http\Controllers\PenggunaController@lookVar')->name
 Route::post('/register/store', 'App\Http\Controllers\PenggunaController@store')->name('pengguna.store');
 Route::post('/login/validate', 'App\Http\Controllers\PenggunaController@loginValidate')->name('pengguna.login');
 Route::view('/login', 'login.loginPage');
+Route::get('/login', function () {
+    return view( 'login.loginPage');
+})->name('login');
 Route::get('/register', function () {
     return view('login.registerPage');
 });

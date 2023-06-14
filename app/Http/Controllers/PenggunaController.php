@@ -44,7 +44,7 @@ class PenggunaController extends Controller
         $pengguna = Pengguna::create($validatedData);
 
         unset($validatedData);
-        return redirect()->route('login.loginPage')->with('success', 'Data berhasil disimpan.');
+        return redirect()->route('login')->with('success', 'Data berhasil disimpan.');
     }
 
     /**

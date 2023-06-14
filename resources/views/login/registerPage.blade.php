@@ -13,6 +13,7 @@
         </div>
         <div class="login">
             <form action="{{ route('pengguna.store') }}" method="POST">
+                @csrf
                 <h1>Registrasi</h1>
                 <hr>
                 <p>Toko Madura</p>
