@@ -61,9 +61,12 @@ class ProdukController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit()
+    public function edit($id)
     {
         //
+        $searchedTable=Product::where('id',$id)->first();
+
+        return view('admin.formEditProduk',compact('searchedTable'));
     }
 
     /**

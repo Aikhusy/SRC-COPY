@@ -11,6 +11,7 @@
             <td>stok</td>
             <td>status</td>
             <td>gambar</td>
+            <td>edit</td>
         </tr>
         @foreach ($produk as $item)
             <tr>
@@ -19,6 +20,7 @@
                 <td>{{ $item->stok }}</td>
                 <td>{{ $item->status }}</td>
                 <td>{{ $item->gambar }}</td>
+                <td><a href="{{ route('produk.edit', ['id' => $item->id]) }}">edit</a></td>
             </tr>
         @endforeach
     </table>

@@ -96,7 +96,7 @@ class PenggunaController extends Controller
             if($users['levels']==1)
             {
                 unset($users);
-                return redirect('/admin/dashboard');
+                return redirect()->route('produk.show');
             }
             if($users['levels']==2)
             {
