@@ -29,4 +29,4 @@
     <input type="submit" value="Submit">
 </form>
 
-<a href="/admin/produk/table">kembali</a>
+<a href="{{ route('produk.show') }}">kembali</a>

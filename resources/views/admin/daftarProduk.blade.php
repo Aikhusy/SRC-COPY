@@ -12,6 +12,7 @@
             <td>status</td>
             <td>gambar</td>
             <td>edit</td>
+            <td>delete</td>
         </tr>
         @foreach ($produk as $item)
             <tr>
@@ -21,6 +22,7 @@
                 <td>{{ $item->status }}</td>
                 <td>{{ $item->gambar }}</td>
                 <td><a href="{{ route('produk.edit', ['id' => $item->id]) }}">edit</a></td>
+                <td><a href="{{ route('produk.delete', ['id' => $item->id]) }}">delete</a></td>
             </tr>
         @endforeach
     </table>

@@ -43,9 +43,10 @@ route::resource('Product',ProdukController::class);
 
 Route::post('/Admin/produk/create', 'App\Http\Controllers\ProdukController@store')->name('produk.store');
 Route::get('/Admin/produk/table', 'App\Http\Controllers\ProdukController@show')->name('produk.show');
-Route::get('/Admin/produk/edit', 'App\Http\Controllers\ProdukController@edit')->name('produk.edit');
+Route::get('/Admin/produk/edit/{id}', 'App\Http\Controllers\ProdukController@edit')->name('produk.edit');
+Route::get('/Admin/produk/delete/{id}', 'App\Http\Controllers\ProdukController@destroy')->name('produk.delete');
 Route::post('/Admin/produk/edit/store', 'App\Http\Controllers\ProdukController@update')->name('produk.update');
-Route::get('/admin/dashboard', function () {
+Route::get('Admin/dashboard', function () {
     return view('admin.dashboard');
 });
 Route::get('/admin/produk/form', function () {
