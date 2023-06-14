@@ -64,9 +64,13 @@ class ProdukController extends Controller
     public function edit($id)
     {
         //
-        $searchedTable=Product::where('id',$id)->first();
+        $produk = Product::find($id);
 
-        return view('admin.formEditProduk',compact('searchedTable'));
+        if(!$produk)
+        {
+            return redirect()->route('produk.show');
+        }
+        return view('admin.formEditProduk',compact('produk'));
     }
 
     /**
@@ -74,14 +78,40 @@ class ProdukController extends Controller
      */
     public function update(Request $request)
     {
-        //
+
+
+        $validatedData=$request->validate(
+            [
+                'nama_produk'=>'required',
+                'harga'=>'required',
+                'gambar'=>'required',
+                'stok'=>'required',
+                'status'=>'required',
+            ]
+        );
+
+        $produkBaru = Product::find($request->id);
+
+        $produkBaru->nama_produk = $request->nama_produk;
+        $produkBaru->harga = $request->harga;
+        $produkBaru->gambar = $request->gambar;
+        $produkBaru->stok = $request->stok;
+        $produkBaru->status= $request->status;
+
+        $produkBaru->save();
+
+        $semuaProduk=Product::all();
+        
+        return view('admin.daftarProduk')->with('produk',$semuaProduk);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy()
+    public function destroy($id)
     {
         //
+        Product::where('id',$id)->delete();
+        return redirect()->back();
     }
 }
