@@ -17,7 +17,9 @@ class PenggunaFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'username'=>fake()->name(),
+            'password'=>bcrypt(fake()->numberBetween(100, 300)),
+            'levels' => '1'
         ];
     }
 }
