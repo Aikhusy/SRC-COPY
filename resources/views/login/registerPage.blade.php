@@ -30,7 +30,7 @@
                 <input type="hidden" id="hidden" name="levels" value=1>
                 <button type="submit" value="Submit">Klik</button>
                 <p>
-                    <a href="{{ route('pengguna.create') }}">Silahkan Login</a>
+                    <a href="{{ route('login') }}">Silahkan Login</a>
                 </p>
             </form>
         </div>
