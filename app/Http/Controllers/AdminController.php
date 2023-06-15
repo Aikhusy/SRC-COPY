@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\pengguna;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -30,15 +30,15 @@ class AdminController extends Controller
     {
         $validatedData=$request->validate(
             [
-                'name'=>'required',
-                'email'=>'required',
-                'password'=>'required'
+                'username'=>'required',
+                'password'=>'required',
+                'levels'=>'required'
             ]
             );
-            $User=User::create($validatedData);
-            $usr=User::all();
+            $pengguna=pengguna::create($validatedData);
+            $admin=pengguna::all();
 
-            return view('admin.daftarUser')->with('success','Berhasil input admin')->with('User',$usr);
+            return view('admin.daftarUser')->with('success','Berhasil input admin')->with('pengguna',$admin);
     }
 
     /**
@@ -46,8 +46,8 @@ class AdminController extends Controller
      */
     public function show()
     {
-        $usr=User::all();
-        return view('admin.daftarUser')->with('User',$usr);
+        $admin=pengguna::all();
+        return view('admin.daftarUser')->with('pengguna',$admin);
     }
 
     /**
