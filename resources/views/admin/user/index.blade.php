@@ -19,22 +19,22 @@
  
  <table class="table table-bordered">
  <tr>
- <th>Nama</th>
- <th>Email</th>
+ <th>Username</th>
  <th>Password</th>
+ <th>Levels</th>
  <th width="280px">Action</th>
  </tr>
- @foreach ($user as $User)
+ @foreach ($user as $pengguna)
  <tr>
  
- <td>{{ $User->Nama }}</td>
- <td>{{ $User->Email }}</td>
- <td>{{ $User->Password }}</td>
+ <td>{{ $pengguna->userame }}</td>
+ <td>{{ $pengguna->password }}</td>
+ <td>{{ $pengguna->levels }}</td>
  <td>
- <form action="{{ route('user.destroy',$User->name) }}" method="POST">
+ <form action="{{ route('user.destroy',$pengguna->username) }}" method="POST">
  
- <a class="btn btn-info" href="{{ route('user.show',$User->name) }}">Show</a>
- <a class="btn btn-primary" href="{{ route('user.edit',$User->name) }}">Edit</a>
+ <a class="btn btn-info" href="{{ route('user.show',$pengguna->username) }}">Show</a>
+ <a class="btn btn-primary" href="{{ route('user.edit',$pengguna->username) }}">Edit</a>
  @csrf
  @method('DELETE')
  <button type="submit" class="btn btn-danger">Delete</button>

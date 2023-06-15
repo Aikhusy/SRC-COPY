@@ -23,16 +23,16 @@
  <form method="post" action="{{ route('user.store') }}" id="myForm">
  @csrf
  <div class="form-group">
- <label for="name">Nama</label> 
- <input type="text" name="name" class="form-control" id="name" aria-describedby="name" > 
- </div>
- <div class="form-group">
- <label for="email">Email</label> 
- <input type="text" name="email" class="form-control" id="email" aria-describedby="email" > 
+ <label for="username">Username</label> 
+ <input type="text" name="username" class="form-control" id="username" aria-describedby="username" > 
  </div>
  <div class="form-group">
  <label for="password">Password</label> 
- <input type="password" name="password" class="form-control" id="password" aria-describedby="password" > 
+ <input type="text" name="password" class="form-control" id="password" aria-describedby="password" > 
+ </div>
+ <div class="form-group">
+ <label for="levels">Levels</label> 
+ <input type="text" name="levels" class="form-control" id="levels" aria-describedby="levels" > 
  </div>
  <button type="submit" class="btn btn-primary">Submit</button>
  </form>

@@ -20,20 +20,20 @@
  </ul>
  </div>
  @endif
- <form method="post" action="{{ route('user.update', $User->name) }}" id="myForm">
+ <form method="post" action="{{ route('user.update', $pengguna->username) }}" id="myForm">
  @csrf
  @method('PUT')
  <div class="form-group">
- <label for="name">Nama</label> 
- <input type="text" name="name" class="form-control" id="name" value="{{ $User->name }}" aria-describedby="name" > 
- </div>
- <div class="form-group">
- <label for="email">Email</label> 
- <input type="text" name="email" class="form-control" id="email" value="{{ $User->email }}" aria-describedby="email" > 
+ <label for="username">Usernama</label> 
+ <input type="text" name="username" class="form-control" id="username" value="{{ $pengguna->username }}" aria-describedby="username" > 
  </div>
  <div class="form-group">
  <label for="password">Password</label> 
- <input type="text" name="password" class="form-control" id="password" value="{{ $User->password }}" aria-describedby="password" > 
+ <input type="text" name="password" class="form-control" id="password" value="{{ $pengguna->password }}" aria-describedby="password" > 
+ </div>
+ <div class="form-group">
+ <label for="levels">Levels</label> 
+ <input type="text" name="levels" class="form-control" id="levels" value="{{ $pengguna->levels }}" aria-describedby="username" > 
  </div>
  <button type="submit" class="btn btn-primary">Submit</button>
  </form>
