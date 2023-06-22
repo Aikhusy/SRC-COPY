@@ -94,7 +94,7 @@ class PenggunaController extends Controller
         if ($users && Hash::check($request['password'], $users->password)) {
             if ($users['levels'] == 1) {
                 unset($users);
-                return redirect()->route('produk.show');
+                return redirect()->route('display.admin');
             }
             if ($users['levels'] == 2) {
                 unset($users);
