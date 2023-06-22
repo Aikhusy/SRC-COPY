@@ -9,9 +9,9 @@
 <div>
     <div class="container">
         <div class="login">
-            <form action="{{ route('pengguna.login')}}" method="POST">
+            <form action="{{ route('pengguna.login') }}" method="POST">
                 @csrf
-                
+
                 <h1>Login</h1>
                 <hr>
                 <p>Toko Madura</p>

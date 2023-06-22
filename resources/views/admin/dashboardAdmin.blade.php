@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-xl">
-        <h1>Selamat Berbelanja</h1>
-        @include('pengguna.daftarProduk')
+        <h1>Dashboard Admin</h1>
+        @include('admin.daftarProduk')
     </div>
 @endsection

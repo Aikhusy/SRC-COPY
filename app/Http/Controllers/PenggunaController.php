@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\pengguna;
+use App\Models\Product;
 use App\Http\Requests\StorepenggunaRequest;
 use App\Http\Requests\UpdatepenggunaRequest;
 use Illuminate\Http\Request;
@@ -86,27 +87,20 @@ class PenggunaController extends Controller
 
     public function loginValidate(Request $request)
     {
-        $users = pengguna::
-            where('username',$request['username'])
+        $users = pengguna::where('username', $request['username'])
             ->first();
-        
+
         // dd($request['password']);
-        if ($users && Hash::check($request['password'], $users->password)) 
-        {
-            if($users['levels']==1)
-            {
+        if ($users && Hash::check($request['password'], $users->password)) {
+            if ($users['levels'] == 1) {
                 unset($users);
                 return redirect()->route('produk.show');
             }
-            if($users['levels']==2)
-            {
+            if ($users['levels'] == 2) {
                 unset($users);
-                return view('pengguna.dashboard');
+                return redirect()->route('produk.display');
             }
-        } 
-        
-        else 
-        {
+        } else {
             unset($users);
             return view('login.loginPage');
         }

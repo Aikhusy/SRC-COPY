@@ -30,32 +30,31 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData=$request->validate(
+        $validatedData = $request->validate(
             [
-                'nama_produk'=>'required',
-                'harga'=>'required',
-                'gambar'=>'required',
-                'stok'=>'required',
-                'status'=>'required',
+                'nama_produk' => 'required',
+                'harga' => 'required',
+                'gambar' => 'required',
+                'stok' => 'required',
+                'status' => 'required',
             ]
         );
 
-        $produk=Product::create($validatedData);
+        $produk = Product::create($validatedData);
 
-        $semuaProduk=Product::all();
+        $semuaProduk = Product::all();
 
-        return view('admin.daftarProduk')->with('success','Berhasil menginput barang baru')->with('produk',$semuaProduk);
+        return view('admin.daftarProduk')->with('success', 'Berhasil menginput barang baru')->with('produk', $semuaProduk);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function displayAdmin()
     {
-        //
-        $semuaProduk=Product::all();
-        return view('admin.daftarProduk')->with('produk',$semuaProduk);
-
+        $products = Product::paginate(20);
+        // dd($products);
+        return view('admin.dashboardAdmin', compact('products'));
     }
 
     /**
@@ -66,11 +65,10 @@ class ProdukController extends Controller
         //
         $produk = Product::find($id);
 
-        if(!$produk)
-        {
+        if (!$produk) {
             return redirect()->route('produk.show');
         }
-        return view('admin.formEditProduk',compact('produk'));
+        return view('admin.formEditProduk', compact('produk'));
     }
 
     /**
@@ -80,13 +78,13 @@ class ProdukController extends Controller
     {
 
 
-        $validatedData=$request->validate(
+        $validatedData = $request->validate(
             [
-                'nama_produk'=>'required',
-                'harga'=>'required',
-                'gambar'=>'required',
-                'stok'=>'required',
-                'status'=>'required',
+                'nama_produk' => 'required',
+                'harga' => 'required',
+                'gambar' => 'required',
+                'stok' => 'required',
+                'status' => 'required',
             ]
         );
 
@@ -96,13 +94,13 @@ class ProdukController extends Controller
         $produkBaru->harga = $request->harga;
         $produkBaru->gambar = $request->gambar;
         $produkBaru->stok = $request->stok;
-        $produkBaru->status= $request->status;
+        $produkBaru->status = $request->status;
 
         $produkBaru->save();
 
-        $semuaProduk=Product::all();
-        
-        return view('admin.daftarProduk')->with('produk',$semuaProduk);
+        $semuaProduk = Product::all();
+
+        return view('admin.dashboardAdmin')->with('products', $semuaProduk);
     }
 
     /**
@@ -111,7 +109,14 @@ class ProdukController extends Controller
     public function destroy($id)
     {
         //
-        Product::where('id',$id)->delete();
+        Product::where('id', $id)->delete();
         return redirect()->back();
+    }
+
+    public function displayProduk()
+    {
+        $products = Product::paginate(20);
+        // dd($products);
+        return view('pengguna.dashboard', compact('products'));
     }
 }
