@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('pengguna', function (Blueprint $table) {
             $table->id();
             $table->string('username',50);
+            $table->string('email',100);
             $table->string('password',100);
             $table->integer('levels');
             $table->timestamps();

@@ -34,15 +34,17 @@ class PenggunaController extends Controller
     public function store(Request $request)
     {
         //
+        // dd($request);
         $validatedData = $request->validate([
             'username' => 'required',
+            'email'=>'required',
             'password' => 'required',
             'levels' => 'required'
         ]);
 
         $validatedData['password'] = Hash::make($validatedData['password']);
 
-        $pengguna = Pengguna::create($validatedData);
+        Pengguna::create($validatedData);
 
         unset($validatedData);
         return redirect()->route('login')->with('success', 'Data berhasil disimpan.');
@@ -54,6 +56,8 @@ class PenggunaController extends Controller
     public function show(pengguna $pengguna)
     {
         //
+        $admin=pengguna::all();
+        return view('admin.user.daftarUser')->with('pengguna',$admin);
     }
 
     /**
@@ -87,7 +91,7 @@ class PenggunaController extends Controller
 
     public function loginValidate(Request $request)
     {
-        $users = pengguna::where('username', $request['username'])
+        $users = pengguna::where('email', $request['email'])
             ->first();
 
         // dd($request['password']);

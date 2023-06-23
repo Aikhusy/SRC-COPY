@@ -15,11 +15,11 @@
                 <h1>Login</h1>
                 <hr>
                 <p>Toko Madura</p>
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username">
+
+                <label for="username">Email</label>
+                <input type="email" id="email" name="email">
 
                 <br><br>
-
                 <label for="password">Password</label>
                 <input type="text" id="Password" name="password">
 
