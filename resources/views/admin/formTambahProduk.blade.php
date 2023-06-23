@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-    <form action="{{ route('produk.store') }}" method="POST">
+    <form action="{{ route('produk.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <label for="username">Nama Produknya</label>

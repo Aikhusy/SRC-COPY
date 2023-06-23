@@ -48,7 +48,7 @@ Route::get('/Admin/produk/tambah', 'App\Http\Controllers\ProdukController@create
 Route::get('/Admin/produk/edit/{id}', 'App\Http\Controllers\ProdukController@edit')->name('produk.edit');
 Route::get('/Admin/produk/delete/{id}', 'App\Http\Controllers\ProdukController@destroy')->name('produk.delete');
 Route::post('/Admin/produk', 'App\Http\Controllers\ProdukController@store')->name('produk.store');
-Route::post('/Admin/produk/edit/store', 'App\Http\Controllers\ProdukController@update')->name('produk.update');
+Route::post('/Admin/produk/edit/{id}', 'App\Http\Controllers\ProdukController@update')->name('produk.update');
 Route::get('Admin/dashboard', function () {
     return view('admin.dashboardAdmin');
 });

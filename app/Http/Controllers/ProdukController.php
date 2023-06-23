@@ -40,16 +40,14 @@ class ProdukController extends Controller
                 'status' => 'required',
             ]
         );
-
+        
         if ($request ->file('gambar'))
         {
-            $image_name= $request->file('gambar')->store('image','public');
+            $image_name= $request->file('gambar')->store('produkImage');
             $validatedData['gambar']=$image_name;
         }
 
-        $produk = Product::create($validatedData);
-
-        $semuaProduk = Product::all();
+        Product::create($validatedData);
 
         return redirect()->route('display.admin')
             ->with('success', 'Produk Berhasil Ditambahkan');
@@ -90,17 +88,19 @@ class ProdukController extends Controller
             [
                 'nama_produk' => 'required',
                 'harga' => 'required',
-                'gambar' => 'required',
                 'stok' => 'required',
                 'status' => 'required',
             ]
         );
-
         $produkBaru = Product::find($request->id);
 
+        if ($request ->file('gambar'))
+        {
+            $image_name= $request->file('gambar')->store('produkImage');
+            $produkBaru->gambar = $image_name;
+        }
         $produkBaru->nama_produk = $request->nama_produk;
         $produkBaru->harga = $request->harga;
-        $produkBaru->gambar = $request->gambar;
         $produkBaru->stok = $request->stok;
         $produkBaru->status = $request->status;
 
@@ -108,7 +108,7 @@ class ProdukController extends Controller
 
         $semuaProduk = Product::all();
 
-        return view('admin.dashboardAdmin')->with('products', $semuaProduk);
+        return redirect('/Admin/dashboard');
     }
 
     /**
@@ -118,7 +118,7 @@ class ProdukController extends Controller
     {
         //
         Product::where('id', $id)->delete();
-        return redirect()->back();
+        return redirect('/Admin/dashboard');
     }
 
     public function displayProduk()

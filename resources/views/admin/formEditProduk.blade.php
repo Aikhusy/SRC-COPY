@@ -7,7 +7,7 @@
                 Edit Produk
             </div>
             <div class="card-body">
-                <form action="{{ route('produk.update', $produk->id) }}" method="POST">
+                <form action="{{ route('produk.update', $produk->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group mb-3">
                         <label class="form-label" for="username">Nama Produknya</label>
@@ -23,7 +23,9 @@
 
                     <div class="form-group mb-3">
                         <label class="form-label" for="gambar">Gambarnya</label>
-                        <input class="form-control" type="text" id="gambar" name="gambar"
+                        <br>
+                        <img src="{{ asset('storage/' . $produk->gambar) }}" class="img-thumbnail" alt="gambar produk" style="max-width: 6rem; max-height: 6rem">
+                        <input class="form-control" type="file" id="gambar" name="gambar"
                             value="{{ $produk->gambar }}">
                     </div>
 
