@@ -32,7 +32,7 @@ Route::post('/login/validate', 'App\Http\Controllers\PenggunaController@loginVal
 Route::get('login/validate/dashboard', 'App\Http\Controllers\ProdukController@displayProduk')->name('produk.display');
 Route::view('/login', 'login.loginPage');
 Route::get('/', function () {
-    return view('login.loginPage');
+    return view('landing');
 })->name('login');
 Route::get('/register', function () {
     return view('login.registerPage');
