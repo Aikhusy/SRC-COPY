@@ -56,3 +56,11 @@ Route::get('Admin/dashboard', 'App\Http\Controllers\ProdukController@displayAdmi
 Route::get('/search', [SearchProdukController::class, 'search']);
 
 // ==================================================================================
+route::get('admin/user/table',function(){
+    return view('admin.user.menuShowUser');
+})->name('admin.table');
+route::get('admin/user','App\Http\Controllers\AdminController@show')->name('admin.show');
+route::get('admin/user/tambah','App\Http\Controllers\AdminController@create')->name('admin.create');
+Route::get('dmin/user/edit/{id}', 'App\Http\Controllers\AdminController@edit')->name('admin.edit');
+Route::get('dmin/user/delete/{id}', 'App\Http\Controllers\AdminController@delete')->name('admin.delete');
+route::post('admin/user/store','App\Http\Controllers\AdminController@store')->name('admin.store');

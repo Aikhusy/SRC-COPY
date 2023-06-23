@@ -56,8 +56,8 @@ class PenggunaController extends Controller
     public function show(pengguna $pengguna)
     {
         //
-        $admin=pengguna::all();
-        return view('admin.user.daftarUser')->with('pengguna',$admin);
+        $dataPengguna=pengguna::all();
+        return view('admin.user.daftarUser')->with('pengguna',$dataPengguna);
     }
 
     /**

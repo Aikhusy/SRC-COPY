@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\pengguna;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -20,7 +21,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('login.registerPage');
+        return view('admin.user.formTambahUser');
     }
 
     /**
@@ -31,14 +32,16 @@ class AdminController extends Controller
         $validatedData=$request->validate(
             [
                 'username'=>'required',
+                'email'=>'required',
                 'password'=>'required',
                 'levels'=>'required'
             ]
             );
+            $validatedData['password'] = Hash::make($validatedData['password']);
             $pengguna=pengguna::create($validatedData);
             $admin=pengguna::all();
 
-            return view('admin.daftarUser')->with('success','Berhasil input admin')->with('pengguna',$admin);
+            return redirect()->route('admin.show')->with('success','Berhasil input admin')->with('pengguna',$admin);
     }
 
     /**
@@ -46,8 +49,8 @@ class AdminController extends Controller
      */
     public function show()
     {
-        $admin=pengguna::all();
-        return view('admin.daftarUser')->with('pengguna',$admin);
+        $pengguna=pengguna::all();
+        return view('admin.user.menuShowUser',compact('pengguna'));
     }
 
     /**
@@ -55,9 +58,9 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        $searchedTable=pengguna::where('id',$id)->first();
+        $pengguna=pengguna::where('id',$id)->first();
 
-        return view('admin.formEditAdmin',compact('searchedTable'));
+        return view('admin.user.formEditUser',compact('pengguna'));
     }
 
     /**
@@ -66,6 +69,30 @@ class AdminController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $penggunaBaru = pengguna::find($request->id);
+        $validatedData=$request->validate(
+            [
+                'username'=>'required',
+                'email'=>'required',
+                'oldPassword'=>'required',
+                'newPassword'=>'required',
+                'levels'=>'required'
+            ]
+        );
+            if (Hash::check($request->input('oldPassword'), $request->input('newPassword'))) {
+                // Password cocok, lakukan tindakan yang sesuai
+                $passwordBaru = Hash::make($validatedData['newPassword']);
+                $penggunaBaru['username']=$validatedData['username'];
+                $penggunaBaru['email']=$validatedData['email'];
+                $penggunaBaru['password']=$passwordBaru;
+                $penggunaBaru['levels']=$validatedData['levels'];
+
+                $penggunaBaru->save();
+            }
+            
+            $admin=pengguna::all();
+
+            return redirect()->route('admin.show')->with('success','Berhasil input admin')->with('pengguna',$admin);
     }
 
     /**

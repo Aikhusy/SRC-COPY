@@ -19,8 +19,8 @@
                         Table
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Produk</a></li>
-                        <li><a class="dropdown-item" href="#">User</a></li>
+                        <li><a class="dropdown-item" href="{{route('display.admin')}}">Produk</a></li>
+                        <li><a class="dropdown-item" href="{{route('admin.show')}}">User</a></li>
                     </ul>
                 </li>
             </ul>
