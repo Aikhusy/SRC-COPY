@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-xl">
-        @include('layouts.admin.navbar')
+        @include('partials.navbarAdmin')
         <h1>Tabel User</h1>
         @include('admin.user.daftarUser')
     </div>

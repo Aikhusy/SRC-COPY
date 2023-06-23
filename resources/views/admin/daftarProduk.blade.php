@@ -29,7 +29,7 @@
                                             <td>{{ $item->harga }}</td>
                                             <td>{{ $item->stok }}</td>
                                             <td>{{ $item->status }}</td>
-                                            <td><img src="{{ asset($item->gambar) }}" class="img-thumbnail"
+                                            <td><img src="{{ asset('storage/'.$item->gambar) }}" class="img-thumbnail"
                                                     alt="gambar produk" style="max-width: 4rem; max-height: 4rem">
                                             </td>
                                             <td><a href="{{ route('produk.edit', ['id' => $item->id]) }}"><span
