@@ -15,7 +15,7 @@
         <br><br>
 
         <label for="gambar">Gambarnya</label>
-        <input type="text" id="gambar" name="gambar">
+        <input type="file" class="form-control" required="required" name="gambar">
 
         <br><br>
 

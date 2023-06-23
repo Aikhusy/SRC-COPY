@@ -41,6 +41,12 @@ class ProdukController extends Controller
             ]
         );
 
+        if ($request ->file('gambar'))
+        {
+            $image_name= $request->file('gambar')->store('image','public');
+            $validatedData['gambar']=$image_name;
+        }
+
         $produk = Product::create($validatedData);
 
         $semuaProduk = Product::all();

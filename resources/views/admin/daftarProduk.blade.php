@@ -64,6 +64,3 @@
         </div>
     </div>
 @endif
-<a href="/admin/produk/form">
-    tambah produk baru
-</a>

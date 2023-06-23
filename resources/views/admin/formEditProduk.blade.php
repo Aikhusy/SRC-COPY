@@ -9,11 +9,10 @@
             <div class="card-body">
                 <form action="{{ route('produk.update', $produk->id) }}" method="POST">
                     @csrf
-                    @method('PUT')
                     <div class="form-group mb-3">
                         <label class="form-label" for="username">Nama Produknya</label>
                         <input class="form-control" type="text" id="nama_produk" name="nama_produk"
-                            value="{{ $produk->status }}">
+                            value="{{ $produk->nama_produk }}">
                     </div>
 
                     <div class="form-group mb-3">
