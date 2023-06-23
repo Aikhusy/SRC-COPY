@@ -3,8 +3,10 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">DataTable with default features</h3>
+                    <div class="card-header row g-0 text-center">
+                        <div class="col-sm-6 col-md-8 fs-4 text-uppercase">daftar produk</div>
+                        <a class="col-6 col-md-4 btn btn-success text-uppercase"
+                            href="{{ route('produk.create') }}">Tambah Produk</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive-lg">

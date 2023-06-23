@@ -1,14 +1,15 @@
 @extends('layouts.layout')
 
 @section('content')
-    <div class="row justify-content-center align-items-center mt-2">
+    <div class="row justify-content-center align-items-center mt-4">
         <div class="card " style="width: 50%">
             <div class="card-header text-center fs-4 text-uppercase">
                 Edit Produk
             </div>
             <div class="card-body">
-                <form action="{{ route('produk.update') }}" method="POST">
+                <form action="{{ route('produk.update', $produk->id) }}" method="POST">
                     @csrf
+                    @method('PUT')
                     <div class="form-group mb-3">
                         <label class="form-label" for="username">Nama Produknya</label>
                         <input class="form-control" type="text" id="nama_produk" name="nama_produk"

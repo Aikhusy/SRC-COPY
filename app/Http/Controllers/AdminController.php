@@ -55,7 +55,7 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        $searchedTable=User::where('id',$id)->first();
+        $searchedTable=pengguna::where('id',$id)->first();
 
         return view('admin.formEditAdmin',compact('searchedTable'));
     }

@@ -24,7 +24,7 @@ class PenggunaController extends Controller
      */
     public function create()
     {
-        //
+        $user = pengguna::all();
         return view('login.registerPage');
     }
 

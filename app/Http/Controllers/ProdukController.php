@@ -22,7 +22,8 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        //
+        $produk = Product::all();
+        return view('admin.formTambahProduk');
     }
 
     /**
@@ -44,7 +45,8 @@ class ProdukController extends Controller
 
         $semuaProduk = Product::all();
 
-        return view('admin.daftarProduk')->with('success', 'Berhasil menginput barang baru')->with('produk', $semuaProduk);
+        return redirect()->route('display.admin')
+            ->with('success', 'Produk Berhasil Ditambahkan');
     }
 
     /**

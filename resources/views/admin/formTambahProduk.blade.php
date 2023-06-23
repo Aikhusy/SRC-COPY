@@ -31,5 +31,5 @@
         <input type="submit" value="Submit">
     </form>
 
-    <a href="{{ route('produk.show') }}">kembali</a>
+    <a href="{{ route('display.admin') }}">kembali</a>
 @endsection
