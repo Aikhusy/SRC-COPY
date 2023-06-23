@@ -10,11 +10,8 @@ class SearchProdukController extends Controller
 {
     public function search(Request $request)
     {
-        $cari = $request->search;
-        $hasil = Product::where('nama_produk', 'LIKE', '%' . $cari . '%')->paginate();
-        // $hasil = DB::table('products')
-        // ->where('nama_produk','like',"%".$cari."%")
-        // ->paginate();
+        $keyword = $request->search;
+        $hasil = Product::where('nama_produk', 'LIKE', '%' . $keyword . '%')->paginate();
         return view('pengguna.dashboard', ['products' => $hasil]);
     }
 }
