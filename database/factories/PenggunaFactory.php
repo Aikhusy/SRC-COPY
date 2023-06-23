@@ -18,6 +18,7 @@ class PenggunaFactory extends Factory
     {
         return [
             'username'=>fake()->name(),
+            'email'=> fake()->unique()->safeEmail(),
             'password'=>bcrypt(fake()->numberBetween(100, 300)),
             'levels' => '1'
         ];

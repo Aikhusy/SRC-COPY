@@ -1,4 +1,4 @@
-@extends('layouts.admin.layout')
+@extends('layouts.layout')
 
 @section('content')
     <div class="row justify-content-center align-items-center mt-4">
@@ -7,8 +7,9 @@
                 Edit Produk
             </div>
             <div class="card-body">
-                <form action="{{ route('produk.update', $produk->id) }}" method="POST" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('produk.update', $produk->id) }}" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="form-group mb-3">
                         <label class="form-label" for="username">Nama Produknya</label>
                         <input class="form-control" type="text" id="nama_produk" name="nama_produk"
@@ -24,7 +25,7 @@
                     <div class="form-group mb-3">
                         <label class="form-label" for="gambar">Gambarnya</label>
                         <br>
-                        <img src="{{ asset('storage/' . $produk->gambar) }}" class="img-thumbnail" alt="gambar produk" style="max-width: 6rem; max-height: 6rem">
+                        <img src="{{ asset($produk->gambar) }}" class="img-thumbnail mb-2" alt="gambar produk" style="max-width: 6rem; max-height: 6rem">
                         <input class="form-control" type="file" id="gambar" name="gambar"
                             value="{{ $produk->gambar }}">
                     </div>
