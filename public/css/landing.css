@@ -1,0 +1,38 @@
+body {
+    padding-top: 56px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    overflow-x: hidden;
+    background-color: #C38154;
+}
+
+header {
+    height: 92vh;
+}
+
+.bg-main {
+    background-color: #C38154;
+}
+
+.bg-mainbutmorelighter{
+    background-color: #FFC26F;
+}
+
+.bg-cream {
+    background-color: #F9E0BB;
+}
+
+.kategori {
+    overflow-x: auto;
+}
+
+.card-rd {
+    border-radius: 5px 5px 20px 20px;
+}
+
+.card-rd-full {
+    border-radius: 40px;
+}
+
+.card-rd-foto {
+    border-radius: 40px 40px 0 0;
+}
