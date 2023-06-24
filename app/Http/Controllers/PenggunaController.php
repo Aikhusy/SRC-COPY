@@ -7,8 +7,9 @@ use App\Models\Product;
 use App\Http\Requests\StorepenggunaRequest;
 use App\Http\Requests\UpdatepenggunaRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
+use \Firebase\JWT\JWT;
 class PenggunaController extends Controller
 {
     /**
@@ -91,11 +92,14 @@ class PenggunaController extends Controller
 
     public function loginValidate(Request $request)
     {
-        $users = pengguna::where('email', $request['email'])
-            ->first();
+        $validate= $request->validate([
+            'email'=>'required',
+            'password' => 'required',
+        ]);
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)){
+            $users = pengguna::where('email', $request['email'])->first();
 
-        // dd($request['password']);
-        if ($users && Hash::check($request['password'], $users->password)) {
             if ($users['levels'] == 1) {
                 unset($users);
                 return redirect()->route('display.admin');
@@ -104,9 +108,26 @@ class PenggunaController extends Controller
                 unset($users);
                 return redirect()->route('produk.display');
             }
-        } else {
-            unset($users);
-            return view('login.loginPage');
+        }
+    }
+    public function newLoginValidate(Request $request)
+    {
+        $validate= $request->validate([
+            'email'=>'required',
+            'password' => 'required',
+        ]);
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)){
+            $users = pengguna::where('email', $request['email'])->first();
+
+            if ($users['levels'] == 1) {
+                unset($users);
+                return redirect()->route('display.admin');
+            }
+            if ($users['levels'] == 2) {
+                unset($users);
+                return redirect()->route('produk.display');
+            }
         }
     }
 }

@@ -65,3 +65,6 @@ Route::get('dmin/user/edit/{id}', 'App\Http\Controllers\AdminController@edit')->
 Route::get('dmin/user/delete/{id}', 'App\Http\Controllers\AdminController@destroy')->name('admin.delete');
 Route::post('dmin/user/update', 'App\Http\Controllers\AdminController@update')->name('admin.update');
 route::post('admin/user/store','App\Http\Controllers\AdminController@store')->name('admin.store');
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
