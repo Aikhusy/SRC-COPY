@@ -30,15 +30,16 @@
         <div class="container ">
             <div class="row h-100 align-items-center">
                 <div class="col-lg-6">
-                    <img class="img-fluid d-none d-lg-block" src="{{ asset('image/gmbr1.png') }}" alt=""
+                    <img class="img-fluid d-none d-lg-block" src="{{ asset('storage/image/gmbr1.png') }}" alt=""
                         srcset="">
                 </div>
                 <div class="col-lg-6">
                     <h1 class="display-4 text-white mt-5 mb-2 text-uppercase">Selamat Datang di Toko Madura</h1>
-                    <p class="lead mb-5 text-white-50">Temukan berbagai produk kebutuhan sehari-hari dengan harga terjangkau.</p>
+                    <p class="lead mb-5 text-white-50">Temukan berbagai produk kebutuhan sehari-hari dengan harga
+                        terjangkau.</p>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="btn btn-success" href="{{ url('/login') }}">Daftar Akun</a>
+                            <a class="btn btn-success" href="{{ url('/login') }}">LOGIN</a>
                         </li>
                     </ul>
                 </div>
@@ -51,12 +52,13 @@
         <div class="container p-5">
             <div class="row">
                 <div class="col-lg-4">
-                    <img class="img-fluid d-none d-lg-block" src="{{ asset('image/Land/Group3.png') }}" alt=""
+                    <img class="img-fluid d-none d-lg-block" src="{{ asset('storage/image/Land/Group3.png') }}" alt=""
                         srcset="" style="width: 240px; height: 200px;">
                 </div>
                 <div class="col-lg-8">
                     <h4>Produk lengkap</h4>
-                    <p>Kami menyediakan beragam produk berkualitas, mulai dari makanan, minuman, hingga barang-barang kebutuhan rumah tangga.</p>
+                    <p>Kami menyediakan beragam produk berkualitas, mulai dari makanan, minuman, hingga barang-barang
+                        kebutuhan rumah tangga.</p>
                 </div>
             </div>
         </div>
@@ -65,13 +67,14 @@
     <section class="kelebihan bg-cream text-white" data-aos="slide-down" data-aos-duration="400">
         <div class="container p-5">
             <div class="row">
-                <div class="col-lg-4" >
-                    <img class="img-fluid d-none d-lg-block" src="{{ asset('image/Land/Group.png') }}"
-                        alt="" srcset="" style="width: 240px; height: 200px;">
+                <div class="col-lg-4">
+                    <img class="img-fluid d-none d-lg-block" src="{{ asset('storage/image/Land/Group.png') }}" alt=""
+                        srcset="" style="width: 240px; height: 200px;">
                 </div>
                 <div class="col-lg-8">
                     <h4>Pelayanan Terbaik</h4>
-                    <p>Kami selalu berkomitmen untuk memberikan pelayanan terbaik kepada pelanggan. Kepuasan Anda adalah prioritas kami.</p>
+                    <p>Kami selalu berkomitmen untuk memberikan pelayanan terbaik kepada pelanggan. Kepuasan Anda adalah
+                        prioritas kami.</p>
                 </div>
             </div>
         </div>
@@ -81,12 +84,14 @@
         <div class="container p-5">
             <div class="row">
                 <div class="col-lg-4">
-                    <img class="img-fluid d-none d-lg-block" src="{{ asset('image/Land/Group2.png') }}"
-                        alt="" srcset="" style="width: 240px; height: 200px;">
+                    <img class="img-fluid d-none d-lg-block" src="{{ asset('storage/image/Land/Group2.png') }}" alt=""
+                        srcset="" style="width: 240px; height: 200px;">
                 </div>
                 <div class="col-lg-8">
                     <h4>Tim Profesional</h4>
-                    <p>Kami siap membantu Anda dalam setiap langkah belanja. Tim kami yang ramah dan profesional akan dengan senang hati menjawab pertanyaan dan memberikan rekomendasi produk yang sesuai dengan kebutuhan Anda.</p>
+                    <p>Kami siap membantu Anda dalam setiap langkah belanja. Tim kami yang ramah dan profesional akan
+                        dengan senang hati menjawab pertanyaan dan memberikan rekomendasi produk yang sesuai dengan
+                        kebutuhan Anda.</p>
                 </div>
             </div>
         </div>
@@ -95,13 +100,14 @@
     <section class="kelebihan bg-cream text-white" data-aos="slide-down" data-aos-duration="400">
         <div class="container p-5">
             <div class="row">
-                <div class="col-lg-4" >
-                    <img class="img-fluid d-none d-lg-block" src="{{ asset('image/Land/Group1.png') }}"
-                        alt="" srcset="" style="width: 180px; height: 200px;">
+                <div class="col-lg-4">
+                    <img class="img-fluid d-none d-lg-block" src="{{ asset('storage/image/Land/Group1.png') }}" alt=""
+                        srcset="" style="width: 180px; height: 200px;">
                 </div>
                 <div class="col-lg-8">
                     <h4>Harga Kompetitif</h4>
-                    <p>Jelajahi koleksi produk kami yang lengkap dan temukan apa yang Anda butuhkan. Dengan harga yang kompetitif, Anda bisa berbelanja dengan hemat tanpa mengorbankan kualitas.</p>
+                    <p>Jelajahi koleksi produk kami yang lengkap dan temukan apa yang Anda butuhkan. Dengan harga yang
+                        kompetitif, Anda bisa berbelanja dengan hemat tanpa mengorbankan kualitas.</p>
                 </div>
             </div>
         </div>
@@ -123,16 +129,11 @@
     <!-- /.container -->
 
     <!-- Footer -->
-    <footer class="py-5 bg-main">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Toko Madura Bang Ikul 2023</p>
-        </div>
-        <!-- /.container -->
-    </footer>
+    @include('partials.footer')
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-      AOS.init();
+        AOS.init();
     </script>
 </body>
 

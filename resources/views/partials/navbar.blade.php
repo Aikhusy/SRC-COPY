@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand fs-4 text-uppercase" href="#">toko madura</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -27,14 +27,16 @@
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
-                </li>
             </ul>
-            <form class="d-flex" role="search" method="GET" action="/search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            <div class="row">
+                <a class="col-sm-2 btn btn-danger material-symbols-rounded text-white mx-2"
+                    href="{{ route('landingPage') }}">logout</a>
+                <form class="col d-flex" role="search" method="GET" action="/search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                        name="search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
         </div>
     </div>
 </nav>

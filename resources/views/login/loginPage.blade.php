@@ -21,18 +21,18 @@
 
                 <br><br>
                 <label for="password">Password</label>
-                <input type="text" id="Password" name="password">
+                <input type="password" id="Password" name="password">
 
                 <br><br>
 
-                <button type="submit" value="Submit">Klik</button>
+                <button type="submit" value="Submit">LOGIN</button>
                 <p>
                     <a href="{{ route('pengguna.create') }}">Belum Punya Akun?</a>
                 </p>
             </form>
         </div>
         <div class="right">
-            <img src="{{ asset('image/gmbr1.png') }}" alt="">
+            <img src="{{ asset('storage/image/gmbr1.png') }}" alt="">
         </div>
     </div>
 </div>

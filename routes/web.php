@@ -30,10 +30,10 @@ Route::post('/lookVar', 'App\Http\Controllers\PenggunaController@lookVar')->name
 Route::post('/register/store', 'App\Http\Controllers\PenggunaController@store')->name('pengguna.store');
 Route::post('/login/validate', 'App\Http\Controllers\PenggunaController@loginValidate')->name('pengguna.login');
 Route::get('login/validate/dashboard', 'App\Http\Controllers\ProdukController@displayProduk')->name('produk.display');
-Route::view('/login', 'login.loginPage');
+Route::view('/login', 'login.loginPage')->name('login');
 Route::get('/', function () {
     return view('landing');
-})->name('login');
+})->name('landingPage');
 Route::get('/register', function () {
     return view('login.registerPage');
 });
@@ -61,9 +61,9 @@ route::get('admin/user/table',function(){
 })->name('admin.table');
 route::get('admin/user','App\Http\Controllers\AdminController@show')->name('admin.show');
 route::get('admin/user/tambah','App\Http\Controllers\AdminController@create')->name('admin.create');
-Route::get('dmin/user/edit/{id}', 'App\Http\Controllers\AdminController@edit')->name('admin.edit');
-Route::get('dmin/user/delete/{id}', 'App\Http\Controllers\AdminController@destroy')->name('admin.delete');
-Route::post('dmin/user/update', 'App\Http\Controllers\AdminController@update')->name('admin.update');
+Route::get('admin/user/edit/{id}', 'App\Http\Controllers\AdminController@edit')->name('admin.edit');
+Route::get('admin/user/delete/{id}', 'App\Http\Controllers\AdminController@destroy')->name('admin.delete');
+Route::post('admin/user/update', 'App\Http\Controllers\AdminController@update')->name('admin.update');
 route::post('admin/user/store','App\Http\Controllers\AdminController@store')->name('admin.store');
 
 

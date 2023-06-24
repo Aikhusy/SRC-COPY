@@ -9,7 +9,7 @@
 <div>
     <div class="container">
         <div class="gambar">
-            <img src="{{ asset('image/gmbr2.jpg') }}">
+            <img src="{{ asset('storage/image/gmbr2.jpg') }}">
         </div>
         <div class="login">
             <form action="{{ route('pengguna.store') }}" method="POST">
@@ -33,7 +33,7 @@
                 <br><br>
 
                 <input type="hidden" id="hidden" name="levels" value=1>
-                <button type="submit" value="Submit">Klik</button>
+                <button type="submit" value="Submit">REGISTER</button>
                 <p>
                     <a href="{{ route('login') }}">Silahkan Login</a>
                 </p>

@@ -4,7 +4,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header row g-0 text-center">
-                        <div class="col-sm-6 col-md-8 fs-4 text-uppercase">daftar produk</div>
+                        <div class="col-sm-6 col-md-8 fs-4 text-uppercase">daftar user</div>
                         <a class="col-6 col-md-4 btn btn-success text-uppercase"
                             href="{{ route('admin.create') }}">Tambah User</a>
                     </div>
@@ -31,7 +31,7 @@
                                             @else
                                                 <td>User</td>
                                             @endif
-                                        
+
                                             <td><img src="{{ asset('storage/' . $akun->gambar) }}" class="img-thumbnail" alt="gambar produk" style="max-width: 4rem; max-height: 4rem">
                                             </td>
                                             <td><a href="{{ route('admin.edit', ['id' => $akun->id]) }}"><span class="material-symbols-rounded text-black">
