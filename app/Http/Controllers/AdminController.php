@@ -66,7 +66,7 @@ class AdminController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
         //
         $penggunaBaru = pengguna::find($request->id);
@@ -74,32 +74,47 @@ class AdminController extends Controller
             [
                 'username'=>'required',
                 'email'=>'required',
-                'oldPassword'=>'required',
-                'newPassword'=>'required',
                 'levels'=>'required'
             ]
         );
-            if (Hash::check($request->input('oldPassword'), $request->input('newPassword'))) {
+        if(isset($request['newPassword']) && isset($request['oldPassword']))
+        {
+            if (Hash::check($request->input('oldPassword'), $penggunaBaru['password'])) 
+            {
                 // Password cocok, lakukan tindakan yang sesuai
-                $passwordBaru = Hash::make($validatedData['newPassword']);
+                $passwordBaru = Hash::make($request['newPassword']);
                 $penggunaBaru['username']=$validatedData['username'];
                 $penggunaBaru['email']=$validatedData['email'];
                 $penggunaBaru['password']=$passwordBaru;
                 $penggunaBaru['levels']=$validatedData['levels'];
 
                 $penggunaBaru->save();
-            }
-            
-            $admin=pengguna::all();
+                $admin=pengguna::all();
 
-            return redirect()->route('admin.show')->with('success','Berhasil input admin')->with('pengguna',$admin);
+                return redirect()->route('admin.show')->with('success','Berhasil input admin')->with('pengguna',$admin);
+            }
+        }
+
+
+           
+        $penggunaBaru['username']=$validatedData['username'];
+        $penggunaBaru['email']=$validatedData['email'];
+        $penggunaBaru['levels']=$validatedData['levels'];
+        $penggunaBaru->save();
+
+
+            
+        $admin=pengguna::all();
+        return redirect()->route('admin.show')->with('success','Berhasil input admin')->with('pengguna',$admin);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         //
+        pengguna::where('id', $id)->delete();
+        return redirect('/admin/user');
     }
 }
