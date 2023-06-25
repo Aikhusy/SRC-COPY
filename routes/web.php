@@ -4,6 +4,7 @@ use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SearchProdukController;
+use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 // ==================================================================================
-// bagian login login taru disini ya gaess
+// bagian login
 // ==================================================================================
 route::resource('admin', AdminController::class);
 route::resource('pengguna', PenggunaController::class);
@@ -29,7 +30,6 @@ route::resource('pengguna', PenggunaController::class);
 Route::post('/lookVar', 'App\Http\Controllers\PenggunaController@lookVar')->name('lookVar');
 Route::post('/register/store', 'App\Http\Controllers\PenggunaController@store')->name('pengguna.store');
 Route::post('/login/validate', 'App\Http\Controllers\PenggunaController@loginValidate')->name('pengguna.login');
-Route::get('login/validate/dashboard', 'App\Http\Controllers\ProdukController@displayProduk')->name('produk.display');
 Route::view('/login', 'login.loginPage')->name('login');
 Route::get('/', function () {
     return view('landing');
@@ -40,7 +40,7 @@ Route::get('/register', function () {
 
 // ==================================================================================
 // ==================================================================================
-// bagian Barang barang taru disini ya gaess
+// bagian CRUD barang
 // ==================================================================================
 route::resource('Product', ProdukController::class);
 
@@ -54,7 +54,9 @@ Route::get('Admin/dashboard', function () {
 });
 Route::get('Admin/dashboard', 'App\Http\Controllers\ProdukController@displayAdmin')->name('display.admin');
 Route::get('/search', [SearchProdukController::class, 'search']);
-
+// ==================================================================================
+// ==================================================================================
+// bagian CRUD User
 // ==================================================================================
 route::get('admin/user/table',function(){
     return view('admin.user.menuShowUser');
@@ -68,3 +70,12 @@ route::post('admin/user/store','App\Http\Controllers\AdminController@store')->na
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// ==================================================================================
+// ==================================================================================
+// bagian User 
+// ==================================================================================
+Route::get('user/dashboard', 'App\Http\Controllers\ProdukController@displayProduk')->name('produk.display');
+Route::get('user/addToCart/{id}', 'App\Http\Controllers\CartController@addToCart')->name('produk.addToCart');
+route::get('user/shoppingCart', 'App\Http\Controllers\CartController@showCookie')->name('produk.shoppingCart');
+route::post('user/order', 'App\Http\Controllers\CartController@makeInvoice')->name('cart.send');

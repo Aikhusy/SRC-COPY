@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\transaksi;
 use App\Http\Requests\StoretransaksiRequest;
 use App\Http\Requests\UpdatetransaksiRequest;
+use Illuminate\Http\Client\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class TransaksiController extends Controller
 {

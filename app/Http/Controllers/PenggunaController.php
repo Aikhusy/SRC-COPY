@@ -109,6 +109,7 @@ class PenggunaController extends Controller
                 return redirect()->route('produk.display');
             }
         }
+        return redirect()->route('login');
     }
     public function newLoginValidate(Request $request)
     {
