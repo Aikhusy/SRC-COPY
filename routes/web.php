@@ -79,3 +79,4 @@ Route::get('user/dashboard', 'App\Http\Controllers\ProdukController@displayProdu
 Route::get('user/addToCart/{id}', 'App\Http\Controllers\CartController@addToCart')->name('produk.addToCart');
 route::get('user/shoppingCart', 'App\Http\Controllers\CartController@showCookie')->name('produk.shoppingCart');
 route::post('user/order', 'App\Http\Controllers\CartController@makeInvoice')->name('cart.send');
+route::get('user/clearCookie', 'App\Http\Controllers\CartController@clearCookie')->name('clear.cookie');
