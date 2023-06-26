@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('invoice', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_metode');
+            $table->unsignedBigInteger('id_pengguna');
             $table->string('status',50);
             $table->timestamps();
         });

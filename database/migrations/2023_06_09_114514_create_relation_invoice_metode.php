@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('invoice', function (Blueprint $table) {
-            $table->foreign('id_metode')->references('id')->on('metode_pembayaran');
+            $table->foreign('id_pengguna')->references('id')->on('pengguna');
         });
     }
 

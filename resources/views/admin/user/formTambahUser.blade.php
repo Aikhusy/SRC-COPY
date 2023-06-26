@@ -50,7 +50,7 @@
 
                     <div class="form-group mb-3">
                         <label class="form-label" for="password">Password</label>
-                        <input class="form-control" type="password" id="password" name="Password">
+                        <input class="form-control" type="password" id="password" name="password">
                     </div>
 
                     <select name="levels" class="form-select mb-3" aria-label="Default select example">

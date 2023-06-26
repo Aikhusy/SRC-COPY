@@ -9,6 +9,7 @@
                     <div class="card-body">
                         <div class="table-responsive-lg">
                             <form action="{{route('cart.send')}}" method="POST">
+                                @csrf
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
@@ -25,19 +26,14 @@
                                             <td>{{ $item->nama_produk }}</td>
                                             <td>{{ $item->harga }}</td>
                                             <td><input type="hidden" value="{{ $item->id }}" name="data[{{ $index }}][id]"></td>
-                                            <td><input type="number" name="data[{{ $index }}][stock]"></td>
+                                            <td><input type="number" name="data[{{ $index }}][total]"></td>
                                             <td>{{ $item->status }}</td>
                                             <td>
                                                 <img src="{{ asset('storage/'.$item->gambar) }}" class="img-thumbnail"
                                                     alt="gambar produk" style="max-width: 4rem; max-height: 4rem">
                                             </td>
                                             <td>
-                                                <a href="{{ route('produk.edit', ['id' => $item->id]) }}">
-                                                    <span class="material-symbols-rounded text-black">edit</span>
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <a href="{{ route('produk.delete', ['id' => $item->id]) }}">
+                                                <a href="{{ route('produk.removeFromCart', ['id' => $item->id]) }}">
                                                     <span class="material-symbols-rounded text-danger">delete</span>
                                                 </a>
                                             </td>

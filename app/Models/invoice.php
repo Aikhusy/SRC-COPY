@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class invoice extends Model
 {
-    use HasFactory;
+    use HasFactory; 
+    protected $fillable=
+    [
+        'id_pengguna',
+        'status',
+    ];
+    protected $table='invoice';
 }

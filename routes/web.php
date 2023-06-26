@@ -77,6 +77,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // ==================================================================================
 Route::get('user/dashboard', 'App\Http\Controllers\ProdukController@displayProduk')->name('produk.display');
 Route::get('user/addToCart/{id}', 'App\Http\Controllers\CartController@addToCart')->name('produk.addToCart');
+Route::get('user/removeFromCart/{id}', 'App\Http\Controllers\CartController@removeFromCart')->name('produk.removeFromCart');
 route::get('user/shoppingCart', 'App\Http\Controllers\CartController@showCookie')->name('produk.shoppingCart');
-route::post('user/order', 'App\Http\Controllers\CartController@makeInvoice')->name('cart.send');
 route::get('user/clearCookie', 'App\Http\Controllers\CartController@clearCookie')->name('clear.cookie');
+
+// ==================================================================================
+// ==================================================================================
+// invoice
+// ==================================================================================
+route::post('user/invoice/create','App\Http\Controllers\InvoiceController@store')->name('cart.send');
+route::get('user/invoice','App\Http\Controllers\InvoiceController@show')->name('invoice.show');
+route::get('user/invoice/{id}', 'App\Http\Controllers\TransaksiController@show')->name('invoice.detail');

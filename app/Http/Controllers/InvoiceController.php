@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\invoice;
 use App\Http\Requests\StoreinvoiceRequest;
 use App\Http\Requests\UpdateinvoiceRequest;
+use App\Models\transaksi;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class InvoiceController extends Controller
 {
@@ -22,14 +25,30 @@ class InvoiceController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreinvoiceRequest $request)
+    public function store(Request $request)
     {
         //
+        $user = Auth::user();
+        $invoice=new invoice();
+        $invoice->id_pengguna=$user->id;
+        $invoice->status="test";
+        $invoice->save();
+        foreach($request['data'] as $row)
+        {   
+            $transaksi= new transaksi();
+            $transaksi->id_produk=$row['id'];
+            $transaksi->id_invoice=$invoice['id'];
+            $transaksi->amount=$row['total'];
+
+            $transaksi->save();
+        }
+
     }
 
     /**
@@ -38,6 +57,10 @@ class InvoiceController extends Controller
     public function show(invoice $invoice)
     {
         //
+        $id_pengguna = Auth::id();
+        $invoices = Invoice::where('id_pengguna', $id_pengguna)->get();
+
+        return view('transaksi.invoiceTable',compact('invoices'));
     }
 
     /**

@@ -9,7 +9,6 @@
             <div class="card-body">
                 <form method="POST" action="{{ route('produk.update', $produk->id) }}" enctype="multipart/form-data">
                     @csrf
-                    @method('PUT')
                     <div class="form-group mb-3">
                         <label class="form-label" for="username">Nama Produknya</label>
                         <input class="form-control" type="text" id="nama_produk" name="nama_produk"

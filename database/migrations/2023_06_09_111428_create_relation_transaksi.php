@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::table('transaksi', function (Blueprint $table) {
             $table->foreign('id_produk')->references('id')->on('products');
-            $table->foreign('id_pengguna')->references('id')->on('pengguna');
             $table->foreign('id_invoice')->references('id')->on('invoice');
         });
     }

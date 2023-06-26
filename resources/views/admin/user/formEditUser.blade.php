@@ -9,7 +9,6 @@
             <div class="card-body">
                 <form method="POST" action="{{ route('admin.update') }}" enctype="multipart/form-data">
                     @csrf
-                    @method('PUT')
                     <div class="form-group mb-3">
                         <label class="form-label" for="username">Username</label>
                         <input class="form-control" type="text" id="username" name="username"

@@ -13,26 +13,35 @@ class CartController extends Controller
     {
         $jsonString = $request->cookie('cart');
         $validated['id'] = $id;
-    
+
         if ($jsonString !== null) {
             $data = json_decode($jsonString, true);
-            foreach ($data as $value) {
-                if ($value == $validated['id']) {
-                    // Nilai $validated['id'] sudah ada dalam cookie 'cart'
-                    // Lakukan tindakan yang sesuai
-                    return redirect()->route('produk.display'); // Keluar dari perulangan jika nilai sudah ditemukan
+
+            if ((is_array($data) && isset($data['id']))) 
+            {
+                $dataArray = [
+                    'id' => [$data['id']], // Menempatkan elemen dalam array
+                ];
+                foreach ($dataArray['id'] as $value) {
+
+                    if ($value == $validated['id']) {
+                        // Nilai $validated['id'] sudah ada dalam cookie 'cart'
+                        // Lakukan tindakan yang sesuai
+                        return redirect()->route('produk.display'); // Keluar dari perulangan jika nilai sudah ditemukan
+                    }
                 }
+                $dataTambahan = $validated;
+                $mergedData = array_merge_recursive($data, $dataTambahan);
+                $dataReady = json_encode($mergedData);
+
+                // Lakukan sesuatu dengan $data jika cookie 'cart' ada
+                // ...
+
+                Cookie::queue('cart', $dataReady, 60);
             }
-            $dataTambahan = $validated;
-            
-            $mergedData = array_merge_recursive($data, $dataTambahan);
-            $dataReady = json_encode($mergedData);
-            
-            // Lakukan sesuatu dengan $data jika cookie 'cart' ada
-            // ...
-    
-            Cookie::queue('cart', $dataReady, 60);
-        } else {
+        } 
+        else 
+        {
             $cookieValue = json_encode($validated);
             Cookie::queue('cart', $cookieValue, 60);
         }
@@ -42,24 +51,58 @@ class CartController extends Controller
     public function showCookie(Request $request)
     {
         $cookieValue = Cookie::get('cart');
+        $data = [];
         $data = json_decode($cookieValue, true);
-        $produk=[];
-        if(isset($data['id'])){
-            foreach ($data['id'] as $value) {
-                $produkBaru = Product::where('id', $value)->first();
-                if ($produkBaru) 
-                {
-                    $produk[] = $produkBaru;
+        $produk = [];
+        if (isset($data)) {
+                if(is_array($data['id']))
+                {                
+                    foreach ($data['id'] as $value) {
+                        $produkBaru = Product::where('id', $value)->first();
+                        if ($produkBaru) 
+                        {
+                            $produk[] = $produkBaru;
+                        }
+                        }
                 }
-            }
+                else
+                {
+                    $produkBaru = Product::where('id',$data['id'])->first();
+                    $produk[] = $produkBaru;
+                    return view('cart.tableCart', compact('produk'));
+                }
+            
         }
-        
-        return view('cart.tableCart',compact('produk'));
+
+        return view('cart.tableCart', compact('produk'));
     }
     public function clearCookie()
     {
         Cookie::queue(Cookie::forget('cart'));
-        $cookieValue = Cookie::get('cart');
         return redirect()->route('produk.display');
+    }
+
+    public function removeFromCart($id)
+    {
+        $cookieValue = Cookie::get('cart');
+        $data = [];
+        $data = json_decode($cookieValue, true);
+        $isiId = [];
+        //perulangan mencari data yang dihapus
+        foreach ($data['id'] as $value) {
+            if ($value == $id) {
+                continue;
+            }
+            $isiId[] = $value;
+        }
+        //encode data ke json
+        $newData['id'] = $isiId;
+        $encode = json_encode($newData);
+        //mereset cookie
+        Cookie::queue(Cookie::forget('cart'));
+        Cookie::queue('cart', $encode, 60);
+
+
+        return redirect()->route('produk.shoppingCart');
     }
 }
