@@ -9,7 +9,7 @@
     <title>Home</title>
 </head>
 
-<body>
+<body style="overflow-x: hidden;">
     <div class="content">
         @yield('content')
         @include('partials.footer')
