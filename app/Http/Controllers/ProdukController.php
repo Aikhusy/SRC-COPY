@@ -40,11 +40,10 @@ class ProdukController extends Controller
                 'status' => 'required',
             ]
         );
-        
-        if ($request ->file('gambar'))
-        {
-            $image_name= $request->file('gambar')->store('produkImage');
-            $validatedData['gambar']=$image_name;
+
+        if ($request->file('gambar')) {
+            $image_name = $request->file('gambar')->store('produkImage');
+            $validatedData['gambar'] = $image_name;
         }
 
         Product::create($validatedData);
@@ -94,9 +93,8 @@ class ProdukController extends Controller
         );
         $produkBaru = Product::find($request->id);
 
-        if ($request ->file('gambar'))
-        {
-            $image_name= $request->file('gambar')->store('produkImage');
+        if ($request->file('gambar')) {
+            $image_name = $request->file('gambar')->store('produkImage');
             $produkBaru->gambar = $image_name;
         }
         $produkBaru->nama_produk = $request->nama_produk;
