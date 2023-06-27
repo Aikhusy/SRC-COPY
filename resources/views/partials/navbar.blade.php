@@ -11,7 +11,7 @@
                     <a class="nav-link active" aria-current="page" href="#">Produk</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Status barang</a>
+                    <a class="nav-link" href="{{route('invoice.show')}}">Status barang</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('produk.shoppingCart')}}">Shopping Cart</a>

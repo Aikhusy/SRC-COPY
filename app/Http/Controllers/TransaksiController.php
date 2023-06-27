@@ -32,15 +32,22 @@ class TransaksiController extends Controller
     public function store(Request $request)
     {
         //
-        dd($request);
+        
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(transaksi $transaksi)
+    public function show($id)
     {
         //
+        $table= transaksi::where('id_invoice', $id)->get();
+        $tableProduk=[];
+        foreach($table as $row)
+        {
+
+        }
+        return redirect()->view('Transaksi.transaksi.blade.php',compact('table'));
     }
 
     /**
