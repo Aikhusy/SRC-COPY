@@ -88,3 +88,4 @@ route::get('user/clearCookie', 'App\Http\Controllers\CartController@clearCookie'
 route::post('user/invoice/create','App\Http\Controllers\InvoiceController@store')->name('cart.send');
 route::get('user/invoice','App\Http\Controllers\InvoiceController@show')->name('invoice.show');
 route::get('user/invoice/{id}', 'App\Http\Controllers\TransaksiController@show')->name('invoice.detail');
+route::get('user/invoice/cetak/{id}', 'App\Http\Controllers\TransaksiController@cetak')->name('transaksi.cetak');

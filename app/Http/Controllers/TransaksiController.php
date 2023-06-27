@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\transaksi;
 use App\Http\Requests\StoretransaksiRequest;
 use App\Http\Requests\UpdatetransaksiRequest;
+use App\Models\Product;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\View;
 
 class TransaksiController extends Controller
 {
@@ -42,12 +44,14 @@ class TransaksiController extends Controller
     {
         //
         $table= transaksi::where('id_invoice', $id)->get();
-        $tableProduk=[];
-        foreach($table as $row)
-        {
-
+        $tableProduk = [];
+        $idInvoice=$id;
+        foreach ($table as $row) {
+            $produk = Product::where('id', $row->id_produk)->first();
+            $produk['amount'] = $row->amount;
+            $tableProduk[] = $produk;
         }
-        return redirect()->view('Transaksi.transaksi.blade.php',compact('table'));
+        return view('Transaksi.transaksiTable',compact('tableProduk','idInvoice'));
     }
 
     /**
@@ -72,5 +76,18 @@ class TransaksiController extends Controller
     public function destroy(transaksi $transaksi)
     {
         //
+    }
+    public function cetak($id)
+    {
+        $table= transaksi::where('id_invoice', $id)->get();
+        $tableProduk = [];
+        $idInvoice=$id;
+        foreach ($table as $row) {
+            $produk = Product::where('id', $row->id_produk)->first();
+            $produk['amount'] = $row->amount;
+            $tableProduk[] = $produk;
+        }
+        $view = View::make('Transaksi.transaksiTable',compact('tableProduk','idInvoice'));
+        $html = $view->render();
     }
 }
