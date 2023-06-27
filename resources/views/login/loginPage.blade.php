@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
 </head>
 <div>
     <div class="container">
@@ -37,5 +38,13 @@
     </div>
 </div>
 </body>
+<script type="text/javascript">
+    gsap.from('.container', {
+        duration: 1,
+        y: -200,
+        opacity: 0,
+        ease: 'back'
+    });
+</script>
 
 </html>

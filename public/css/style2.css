@@ -24,19 +24,19 @@ body {
 
 .login {
     width: 400px;
-    
+
 }
 
 form {
     width: 250px;
-    margin-righ: 60px auto;
+    margin-right: 60px auto;
 }
 
 h1{
  margin: 20px;
  text-align: center;
  font-weight: bolder;
- text-transform: uppercase;   
+ text-transform: uppercase;
 }
 
 hr{
@@ -66,8 +66,7 @@ form label {
 .gambar img {
     width: 450px;
     height: 100%;
-    border-top-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-radius: 15px;
     float: left;
 }
 
