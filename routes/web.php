@@ -73,9 +73,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // ==================================================================================
 // ==================================================================================
-// bagian User 
+// bagian User
 // ==================================================================================
 Route::get('user/dashboard', 'App\Http\Controllers\ProdukController@displayProduk')->name('produk.display');
+Route::get('user/dashboard/detail_produk/{id}','App\Http\Controllers\ProdukController@index')->name('produk.detail');
 Route::get('user/addToCart/{id}', 'App\Http\Controllers\CartController@addToCart')->name('produk.addToCart');
 Route::get('user/removeFromCart/{id}', 'App\Http\Controllers\CartController@removeFromCart')->name('produk.removeFromCart');
 route::get('user/shoppingCart', 'App\Http\Controllers\CartController@showCookie')->name('produk.shoppingCart');

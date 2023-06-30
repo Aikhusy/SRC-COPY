@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand fs-4 text-uppercase" href="#">toko madura</a>
+        <a class="navbar-brand fs-3 text-uppercase" href="#">toko madura</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -22,8 +22,10 @@
                 </li>
             </ul>
             <div class="row">
-                <a class="col-sm-2 btn btn-danger material-symbols-rounded text-white mx-2"
+                <span class="col-sm-2">
+                    <a class="btn btn-danger material-symbols-rounded text-white mx-2"
                     href="{{ route('landingPage') }}">logout</a>
+                </span>
                 <form class="col d-flex" role="search" method="GET" action="/search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
                         name="search">

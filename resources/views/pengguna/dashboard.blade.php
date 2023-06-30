@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-xl">
         @include('partials.navbar')
-        <h1>Selamat Berbelanja</h1>
+        <h3 class="text-center mb-3 text-uppercase">Selamat Berbelanja 😊</h3>
         @include('pengguna.daftarProduk')
     </div>
 @endsection

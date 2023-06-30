@@ -12,9 +12,10 @@ class ProdukController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $product = Product::where('id', $id)->first();
+        return view('pengguna.detailProduk', compact('product'));
     }
 
     /**
@@ -122,7 +123,8 @@ class ProdukController extends Controller
     public function displayProduk()
     {
         $products = Product::paginate(20);
+        $title = "product";
         // dd($products);
-        return view('pengguna.dashboard', compact('products'));
+        return view('pengguna.dashboard', compact('products'))->with('title', $title);
     }
 }

@@ -40,7 +40,7 @@ class InvoiceController extends Controller
         $invoice->status="test";
         $invoice->save();
         foreach($request['data'] as $row)
-        {   
+        {
             $transaksi= new transaksi();
             $transaksi->id_produk=$row['id'];
             $transaksi->id_invoice=$invoice['id'];
@@ -59,8 +59,9 @@ class InvoiceController extends Controller
         //
         $id_pengguna = Auth::id();
         $invoices = Invoice::where('id_pengguna', $id_pengguna)->get();
+        $title = "order";
 
-        return view('transaksi.invoiceTable',compact('invoices'));
+        return view('transaksi.invoiceTable',compact('invoices'))->with('title', $title);
     }
 
     /**
