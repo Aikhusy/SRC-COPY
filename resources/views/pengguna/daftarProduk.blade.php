@@ -1,4 +1,4 @@
-<div class="row row-cols-1 row-cols-md-4 g-4">
+<div class="row row-cols-1 row-cols-md-4 g-4 mx-auto">
     @foreach ($products as $product)
         <div class="col">
             <div class="card h-100">
@@ -8,7 +8,8 @@
                     <p class="card-text">Harga: {{ $product->harga }}</p>
                 </div>
                 <div class="card-footer">
-                    <a href="{{ route('produk.detail', ['id' => $product->id]) }}" class="btn btn-primary">Detail Produk</a>
+                    <a href="{{ route('produk.detail', ['id' => $product->id]) }}" class="btn btn-primary">Detail
+                        Produk</a>
                     <button class="btn btn-warning material-symbols-rounded"
                         onclick="window.location.href = '{{ route('produk.addToCart', ['id' => $product->id]) }}'">
                         add_shopping_cart</button>

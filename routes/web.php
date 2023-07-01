@@ -3,6 +3,7 @@
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\searchController;
 use App\Http\Controllers\SearchProdukController;
 use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Route;
@@ -53,7 +54,7 @@ Route::get('Admin/dashboard', function () {
     return view('admin.dashboardAdmin');
 });
 Route::get('Admin/dashboard', 'App\Http\Controllers\ProdukController@displayAdmin')->name('display.admin');
-Route::get('/search', [SearchProdukController::class, 'search']);
+Route::get('/search/{active}', [searchController::class, 'search'])->name('search');
 // ==================================================================================
 // ==================================================================================
 // bagian CRUD User

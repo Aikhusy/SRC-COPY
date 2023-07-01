@@ -123,8 +123,8 @@ class ProdukController extends Controller
     public function displayProduk()
     {
         $products = Product::paginate(20);
-        $title = "product";
+        $active = "product";
         // dd($products);
-        return view('pengguna.dashboard', compact('products'))->with('title', $title);
+        return view('pengguna.dashboard', compact('products'))->with('active', $active);
     }
 }

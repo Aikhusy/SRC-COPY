@@ -11,6 +11,14 @@
                             <div class="fs-4 text-uppercase">Pesanan Kamu</div>
                         </div>
                         <div class="card-body">
+                            @if ($message = Session::get('success'))
+                                <div class="alert alert-success alert-dismissible fade show d-flex justify-content-center align-items-center col-4"
+                                    role="alert">
+                                    <strong>{{ $message }}</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
                             <div class="table-responsive-lg">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>

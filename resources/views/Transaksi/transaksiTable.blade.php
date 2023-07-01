@@ -52,7 +52,7 @@
                                         </tr>
                                     </tfoot>
                                 </table>
-                                Total = <span class="fw-bolder">{{ $total }}</span>
+                                <p>Total = <strong>{{ $total }}</strong></p>
                                 <button class="btn btn-outline-info ms-3" href="{{ route('transaksi.cetak', ['id' => $idInvoice]) }}">cetak</button>
                                 <a class="btn btn-success ms-4" href="{{ route('invoice.show') }}">kembali</a>
                             </div>

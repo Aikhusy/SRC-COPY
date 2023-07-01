@@ -6,6 +6,7 @@ use App\Models\invoice;
 use App\Http\Requests\StoreinvoiceRequest;
 use App\Http\Requests\UpdateinvoiceRequest;
 use App\Models\transaksi;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,7 +38,7 @@ class InvoiceController extends Controller
         $user = Auth::user();
         $invoice=new invoice();
         $invoice->id_pengguna=$user->id;
-        $invoice->status="test";
+        $invoice->status="dikirim";
         $invoice->save();
         foreach($request['data'] as $row)
         {
@@ -48,7 +49,8 @@ class InvoiceController extends Controller
 
             $transaksi->save();
         }
-
+        Cookie::queue(Cookie::forget('cart'));
+        return redirect()->route('invoice.show')->with('success', 'Pesanan berhasil melakukan checkout.');
     }
 
     /**
@@ -59,9 +61,9 @@ class InvoiceController extends Controller
         //
         $id_pengguna = Auth::id();
         $invoices = Invoice::where('id_pengguna', $id_pengguna)->get();
-        $title = "order";
+        $active = "order";
 
-        return view('transaksi.invoiceTable',compact('invoices'))->with('title', $title);
+        return view('transaksi.invoiceTable',compact('invoices'))->with('active', $active);
     }
 
     /**

@@ -6,15 +6,15 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-4 gap-4">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-4">
                 <li class="nav-item">
-                    <a class="nav-link {{ ($title === "product") ? 'active' : '' }} material-symbols-rounded" aria-current="page" href="{{ route('produk.display') }}">box</a>
+                    <a class="nav-link {{ ($active === "product") ? 'active' : '' }} material-symbols-rounded" aria-current="page" href="{{ route('produk.display') }}">box</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ ($title === "order") ? 'active' : '' }} material-symbols-rounded" href="{{route('invoice.show')}}">receipt_long</a>
+                    <a class="nav-link {{ ($active === "order") ? 'active' : '' }} material-symbols-rounded" href="{{route('invoice.show')}}">receipt_long</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ ($title === "cart") ? 'active' : '' }} material-symbols-rounded" href="{{route('produk.shoppingCart')}}">shopping_cart</a>
+                    <a class="nav-link {{ ($active === "cart") ? 'active' : '' }} material-symbols-rounded" href="{{route('produk.shoppingCart')}}">shopping_cart</a>
                 </li>
             </ul>
             <div class="row">
@@ -22,9 +22,9 @@
                     <a class=" btn btn-danger material-symbols-rounded text-white mx-2"
                     href="{{ route('landingPage') }}">logout</a>
                 </span>
-                <form class="col d-flex" role="search" method="GET" action="/search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                        name="search">
+                <form class="col d-flex" role="search" method="GET" action="{{ route('search', $active) }}">
+                    <input class="form-control ms-2" type="search" placeholder="Search.." aria-label="Search"
+                        name="search" value="{{ request('search') }}">
                     <button class="btn btn-outline-success material-symbols-rounded" type="submit">search</button>
                 </form>
             </div>

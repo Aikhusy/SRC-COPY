@@ -17,8 +17,7 @@ class CartController extends Controller
         if ($jsonString !== null) {
             $data = json_decode($jsonString, true);
 
-            if ((is_array($data) && isset($data['id'])))
-            {
+            if ((is_array($data) && isset($data['id']))) {
                 $dataArray = [
                     'id' => [$data['id']], // Menempatkan elemen dalam array
                 ];
@@ -39,11 +38,9 @@ class CartController extends Controller
 
                 Cookie::queue('cart', $dataReady, 60);
             }
-        }
-        else
-        {
+        } else {
             $cookieValue = json_encode($validated);
-            Cookie::queue('cart', $cookieValue, 60);
+            Cookie::queue('cart', $cookieValue, 60 * 60);
         }
         return redirect()->route('produk.display');
     }
@@ -54,28 +51,23 @@ class CartController extends Controller
         $data = [];
         $data = json_decode($cookieValue, true);
         $produk = [];
-        $title = "cart";
+        $active = "cart";
         if (isset($data)) {
-                if(is_array($data['id']))
-                {
-                    foreach ($data['id'] as $value) {
-                        $produkBaru = Product::where('id', $value)->first();
-                        if ($produkBaru)
-                        {
-                            $produk[] = $produkBaru;
-                        }
-                        }
+            if (is_array($data['id'])) {
+                foreach ($data['id'] as $value) {
+                    $produkBaru = Product::where('id', $value)->first();
+                    if ($produkBaru) {
+                        $produk[] = $produkBaru;
+                    }
                 }
-                else
-                {
-                    $produkBaru = Product::where('id',$data['id'])->first();
-                    $produk[] = $produkBaru;
-                    return view('cart.tableCart', compact('produk'))->with('title', $title);
-                }
-
+            } else {
+                $produkBaru = Product::where('id', $data['id'])->first();
+                $produk[] = $produkBaru;
+                return view('cart.tableCart', compact('produk'))->with('active', $active);
+            }
         }
 
-        return view('cart.tableCart', compact('produk'))->with('title', $title);
+        return view('cart.tableCart', compact('produk'))->with('active', $active);
     }
 
     public function clearCookie()

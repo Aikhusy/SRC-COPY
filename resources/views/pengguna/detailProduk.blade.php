@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </div>
-            <div class="d-grid gap-2 col-4 mx-auto position-absolute top-100 start-50 translate-middle">
+            <div class="d-grid gap-2 col-4 position-absolute top-100 start-50 translate-middle">
                 <a class="btn btn-success" href="{{ route('produk.display') }}">kembali</a>
             </div>
         </div>
