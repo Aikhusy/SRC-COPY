@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\invoice;
 use App\Http\Requests\StoreinvoiceRequest;
 use App\Http\Requests\UpdateinvoiceRequest;
+use App\Models\Product;
 use App\Models\transaksi;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Http\Request;

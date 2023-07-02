@@ -53,8 +53,20 @@
                                     </tfoot>
                                 </table>
                                 <p>Total = <strong>{{ $total }}</strong></p>
-                                <button class="btn btn-outline-info ms-3" href="{{ route('transaksi.cetak', ['id' => $idInvoice]) }}">cetak</button>
-                                <a class="btn btn-success ms-4" href="{{ route('invoice.show') }}">kembali</a>
+                                <script>
+                                    function cetakKePDF() {
+                                      window.print();
+                                    }
+                                </script>
+                                <style>
+                                    @media print {
+                                      .print-button {
+                                        display: none;
+                                      }
+                                    }
+                                  </style>
+                                <button class="btn btn-outline-info ms-3 print-button" onclick="cetakKePDF()">cetak</button>
+                                <a class="btn btn-success ms-4 print-button" href="{{ route('invoice.show') }}">kembali</a>
                             </div>
                         </div>
                     </div>

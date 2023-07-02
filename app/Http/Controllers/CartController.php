@@ -42,7 +42,8 @@ class CartController extends Controller
             $cookieValue = json_encode($validated);
             Cookie::queue('cart', $cookieValue, 60 * 60);
         }
-        return redirect()->route('produk.display');
+        $Produknya=Product::find($validated['id']);
+        return redirect()->route('produk.display')->with('success', 'berhasil memasukkan ' .$Produknya->nama_produk .' ke keranjang');
     }
 
     public function showCookie(Request $request)
